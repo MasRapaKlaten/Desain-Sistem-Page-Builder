@@ -1,6 +1,6 @@
 **Alasan Desain**
 
-* Penggunakan pencatatan seperti ids dapat menghemat biaya dari filter, find, serta dapat menghandle urutan array, maupun membuat json ini tidak perlu melewati object.key untuk di maping karna dapat langsung memaping daftar array tersebut lalu mengambil datanya di json secara o(1), sementara json sendiri memberi kemudahan akses o(1)
+* Penggunakan pencatatan seperti ids dapat menghemat dari biaya filter, find, serta dapat menghandle urutan json, maupun membuat json ini tidak perlu melewati object.key untuk di maping karna bisa langsung memapingnya dari daftar array tersebut lalu mengambil datanya di json secara o(1), sementara json sendiri memberi kemudahan akses o(1)
 
 * Penggunakan schema version agar dapat mengidentifikasi versi model data dan dapat menangani sesuai versi dengan tepat jika ada perubahan data kedepannya, ini memastikan data lama di penyipanan tidak rusak saat ada perubahan model kedepannya, serta membuat data mudah di rawat dan dikembangkan
 
