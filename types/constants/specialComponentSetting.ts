@@ -1,0 +1,1 @@
+type SpecialComponentSetting = ReadonlySet<ComponentType>;
