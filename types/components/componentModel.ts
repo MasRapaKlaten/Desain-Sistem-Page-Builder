@@ -1,0 +1,34 @@
+export type EmptyAttribute = Record<string, never>;
+export interface ComponentAttribute {
+  TITLE: TextContentAttribute;
+  SUB_TITLE: TextContentAttribute;
+  MINI_TITLE: TextContentAttribute;
+  HEADLINE: TextContentAttribute;
+  SUB_HEADLINE: TextContentAttribute;
+  CIRCULAR_HEADLINE: TextContentAttribute;
+  PARAGRAPH: ParagraphAttribute;
+  TABLE: TableAttribute;
+  PHOTO: PhotoAttribute;
+  LEARN_MORE: LearnMoreAttribute;
+  CARD: CardAttribute;
+  CHAPTER: EmptyAttribute;
+  SUB_CHAPTER: EmptyAttribute;
+  CHAPTER_LIST: EmptyAttribute;
+  SUB_CHAPTER_LIST: EmptyAttribute;
+  PARAGRAPH_LIST: EmptyAttribute;
+  CARD_LIST: EmptyAttribute;
+  ITEM: TextContentAttribute;
+  LIST: EmptyAttribute;
+}
+export type ComponentType = keyof ComponentAttribute;
+export interface ComponentModel {
+  id: string;
+  type: ComponentType;
+  pageId: string;
+  parentId: "ROOT" | (string & {});
+  childIds: Array<string>;
+  depth: number;
+}
+export type NodeComponent = {
+  [K in ComponentType]: ComponentModel & {type: K; attribute: ComponentAttribute[K]}
+}[ComponentType]

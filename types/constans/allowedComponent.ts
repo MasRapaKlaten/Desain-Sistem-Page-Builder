@@ -1,0 +1,1 @@
+type AllowedComponent = Partial<Record<ComponentType | "ROOT", ComponentType[]>>;
