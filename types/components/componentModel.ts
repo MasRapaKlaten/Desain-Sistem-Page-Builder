@@ -27,7 +27,7 @@ export interface ComponentModel {
   type: ComponentType;
   pageId: string;
   parentId: ParentId | undefined;
-  childIds: Array<string> | undefined;
+  childIds: ReadonlyArray<string> | undefined;
   depth: number | undefined;
 }
 export type ComponentNode = {
