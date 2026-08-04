@@ -5,6 +5,6 @@ export interface SpanAttribute{
   underline: boolean;
 }
 export interface ParagraphAttribute {
-  spanIds: Array<string>;
-  spansById: Record<string, SpanAttribute>;
+  spanIds: ReadonlyArray<string>;
+  spansById: Readonly<Record<string, SpanAttribute>>;
 }
