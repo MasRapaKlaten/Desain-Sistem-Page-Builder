@@ -1,5 +1,5 @@
-export type EmptyAttribute = Record<string, never>;
-export interface ComponentAttribute {
+export type EmptyAttribute = Readonly<Record<string, never>>;
+export interface MappingAttribute {
   TITLE: TextContentAttribute;
   SUB_TITLE: TextContentAttribute;
   MINI_TITLE: TextContentAttribute;
@@ -20,15 +20,16 @@ export interface ComponentAttribute {
   ITEM: TextContentAttribute;
   LIST: EmptyAttribute;
 }
-export type ComponentType = keyof ComponentAttribute;
+export type ComponentType = keyof MappingAttribute;
+export type ParentId = "ROOT" | (string & {});
 export interface ComponentModel {
   id: string;
   type: ComponentType;
   pageId: string;
-  parentId: "ROOT" | (string & {});
-  childIds: Array<string>;
-  depth: number;
+  parentId: ParentId | undefined;
+  childIds: Array<string> | undefined;
+  depth: number | undefined;
 }
-export type NodeComponent = {
-  [K in ComponentType]: ComponentModel & {type: K; attribute: ComponentAttribute[K]}
+export type ComponentNode = {
+  [K in ComponentType]: ComponentModel & {type: K; attribute: MappingAttribute[K]}
 }[ComponentType]
