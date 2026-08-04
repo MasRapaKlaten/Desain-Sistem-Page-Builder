@@ -1,6 +1,6 @@
 export interface RowAttribute {
   id: string;
-  colIds: Array<string>;
+  colIds: ReadonlyArray<string>;
 }
 export interface ColAttribute {
   id: string;
@@ -9,9 +9,9 @@ export interface ColAttribute {
 }
 export interface TableAttribute {
   totalCols: number;
-  colsWidth: Array<string>;
+  colsWidth: ReadonlyArray<string>;
   headerRowId: string;
-  bodyRowIds: Array<string>;
-  rowById: Record<string, RowAttribute>;
-  colById: Record<string, ColAttribute>;
+  bodyRowIds: ReadonlyArray<string>;
+  rowById: Readonly<Record<string, RowAttribute>>;
+  colById: Readonly<Record<string, ColAttribute>>;
 }
