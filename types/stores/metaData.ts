@@ -6,8 +6,8 @@ interface MetaDataState {
   schemaVersion: string;
 }
 interface MetaDataAction {
-  setField: SetField<MetaDataState>
+  setField: <K extends keyof MetaDataState>(payload: {field: K, value: MetaDataState[K]}) => void;
   resetMetaData: () => void;
-  resetField: ResetField<MetaDataState>;
+  resetField: <K extends keyof MetaDataState>(field: K) => void;
 }
-type MetaDataStore = MetaDataState & MetaDataAction;
+type MetaDataStore = Readonly<MetaDataState> & MetaDataAction;
