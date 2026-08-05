@@ -5,10 +5,10 @@ interface EditorState {
   currentLayerWrapper: number | null;
 }
 interface EditorAction{
-  setField: SetField<EditorState>;
+  setField: <K extends keyof EditorState>(payload: {field: K, value: EditorState[K]}) => void;
   openPopUp: (popUp: NonNullable<EditorState["activePopUp"]>) => void;
   closePopUp: () => void;
   resetEditor: () => void;
-  resetField: ResetField<EditorState>;
+  resetField: <K extends keyof EditorState>(field: K) => void;
 }
-type EditorStore = EditorState & EditorAction;
+type EditorStore = Readonly<EditorState> & EditorAction;
